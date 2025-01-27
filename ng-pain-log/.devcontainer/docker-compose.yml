@@ -1,0 +1,9 @@
+services:
+  angular:
+    image: node:18
+    container_name: angular
+    volumes:
+      - ../:/angular
+    command: bash -c "sleep infinity"
+    ports:
+      - "4200:4200"
