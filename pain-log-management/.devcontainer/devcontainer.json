@@ -1,0 +1,10 @@
+{
+    "name": "management",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "management",
+    "workspaceFolder": "/management",
+    "extensions": [
+        "vscjava.vscode-spring-boot",
+        "vscjava.vscode-java-pack"
+    ]
+}
