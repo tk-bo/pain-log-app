@@ -16,7 +16,9 @@ services:
       - management-network
 
   management:
-    image: mcr.microsoft.com/devcontainers/java:1-17-bookworm
+    build:
+      context: ..
+      dockerfile: .devcontainer/docker/Dockerfile
     container_name: management
     ports:
       - "8081:8080"

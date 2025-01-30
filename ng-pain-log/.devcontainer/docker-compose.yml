@@ -1,9 +1,15 @@
+version: '3.8'
+
 services:
   angular:
-    image: node:18
+    build:
+      context: ..
+      dockerfile: .devcontainer/docker/Dockerfile
     container_name: angular
     volumes:
       - ../:/angular
-    command: bash -c "sleep infinity"
+      - /angular/pain-log/node_module
     ports:
       - "4200:4200"
+    tty: true
+    working_dir: /angular/pain-log
