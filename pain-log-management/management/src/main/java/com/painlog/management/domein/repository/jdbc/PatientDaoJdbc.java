@@ -24,7 +24,7 @@ public class PatientDaoJdbc implements PatientDao {
     @Override
     public int insertOne(InsertPatient patient) throws DataAccessException {
         int rowNumber = jdbc.update(
-            "INSERT INTO pain_list(date" + "name," + " movement," + " vas," + "memo)"
+            "INSERT INTO mydatabase.patients(date" + "name," + " movement," + " vas," + "memo)"
                         + " VALUES(?, ?, ?, ?, ?)",
             patient.getDate(), patient.getName(), patient.getMovement(), patient.getVas(), patient.getMemo());
         return rowNumber;
@@ -33,7 +33,7 @@ public class PatientDaoJdbc implements PatientDao {
     // Search for the specified name, movement into the Patient table.
     @Override
     public Patient search(String name, String movement) throws DataAccessException {
-            String sql = "SELECT * FROM pain_list WHERE name LIKE ? AND movement LIKE ?";
+            String sql = "SELECT * FROM mydatabase.patients WHERE name LIKE ? AND movement LIKE ?";
             Object[] params = {"%" + name + "%", "%" + movement + "%" };
             Map<String, Object> map = jdbc.queryForMap(sql, params);
             Patient patient = new Patient();
@@ -50,7 +50,7 @@ public class PatientDaoJdbc implements PatientDao {
     // Select all records into the Patient table.
     @Override
     public List<Patient> select() throws DataAccessException {
-        List<Map<String, Object>> getList = jdbc.queryForList("SELECT * FROM pain_list");
+        List<Map<String, Object>> getList = jdbc.queryForList("SELECT * FROM mydatabase.patients");
         List<Patient> patientList = new ArrayList<>();
         for (Map<String, Object> map : getList) {
             Patient patient = new Patient();
@@ -70,7 +70,7 @@ public class PatientDaoJdbc implements PatientDao {
     @Override
     public int updateOne(Patient patient) throws DataAccessException {
         int rowNumber = jdbc.update(
-            "Update pain_list" + " SET" + " date = ?," + " name = ?," + " movement = ?," + " vas = ?," + " memo = ?",
+            "Update mydatabase.patients" + " SET" + " date = ?," + " name = ?," + " movement = ?," + " vas = ?," + " memo = ?",
             patient.getDate(), patient.getName(), patient.getMovement(), patient.getVas(), patient.getMemo());
         return  rowNumber;
     }
@@ -79,7 +79,7 @@ public class PatientDaoJdbc implements PatientDao {
     @Override
     public int deleteOne(int id) throws DataAccessException {
         int rowNumber = jdbc.update(
-            "DELETE FROM pain_list WHERE id = ?", id);
+            "DELETE FROM mydatabase.patients WHERE id = ?", id);
         return rowNumber;
     }
 }

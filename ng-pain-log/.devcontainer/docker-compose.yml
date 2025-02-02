@@ -8,7 +8,8 @@ services:
     container_name: angular
     volumes:
       - ../:/angular
-      - /angular/pain-log/node_module
+      - /angular/pain-log/node_modules
+
     ports:
       - "4200:4200"
     tty: true
