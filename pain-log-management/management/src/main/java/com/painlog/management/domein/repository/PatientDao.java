@@ -11,7 +11,7 @@ public interface PatientDao {
     // Insert a single record into the Patient table.
     public int insertOne(InsertPatient patient) throws DataAccessException;
     // Search for the specified name, movement into the Patient table.
-    public Patient search(String name, String movement) throws DataAccessException;
+    public List<Patient> search(String name, String movement) throws DataAccessException;
     // Select all records into the Patient table.
     public List<Patient> select() throws DataAccessException;
     // Upload a single recoed into the Patient table.

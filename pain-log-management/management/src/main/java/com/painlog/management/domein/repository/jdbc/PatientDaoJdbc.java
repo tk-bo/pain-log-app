@@ -32,20 +32,26 @@ public class PatientDaoJdbc implements PatientDao {
 
     // Search for the specified name, movement into the Patient table.
     @Override
-    public Patient search(String name, String movement) throws DataAccessException {
-            String sql = "SELECT * FROM mydatabase.patients WHERE name LIKE ? AND movement LIKE ?";
-            Object[] params = {"%" + name + "%", "%" + movement + "%" };
-            Map<String, Object> map = jdbc.queryForMap(sql, params);
+    public List<Patient> search(String name, String movement) throws DataAccessException {
+        String sql = "SELECT * FROM mydatabase.patients WHERE name LIKE ? AND movement LIKE ?";
+        Object[] params = {"%" + name + "%", "%" + movement + "%"};
+
+        List<Patient> patients = jdbc.query(sql, params, (rs, rowNum) -> {
             Patient patient = new Patient();
-            patient.setId((Integer) map.get("id"));
-            Date sqlDate = (Date) map.get("date");
-            patient.setDate(sqlDate.toLocalDate());            
-            patient.setName((String) map.get("name"));
-            patient.setMovement((String) map.get("movement"));
-            patient.setVas((Integer) map.get("vas"));
-            patient.setMemo((String) map.get("memo"));      
+            patient.setId(rs.getInt("id"));
+            Date sqlDate = rs.getDate("date");
+            patient.setDate(sqlDate.toLocalDate());
+            patient.setName(rs.getString("name"));
+            patient.setMovement(rs.getString("movement"));
+            patient.setVas(rs.getInt("vas"));
+            patient.setMemo(rs.getString("memo"));
+
             return patient;
+        });
+
+        return patients;
     }
+
 
     // Select all records into the Patient table.
     @Override

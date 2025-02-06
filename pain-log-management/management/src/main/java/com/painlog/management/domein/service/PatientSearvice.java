@@ -34,7 +34,7 @@ public class PatientSearvice {
     }
 
     // Method for retrieving multiple records.
-    public Patient search(String name, String movement) {
+    public List<Patient> search(String name, String movement) {
         return dao.search(name, movement);
     }
 

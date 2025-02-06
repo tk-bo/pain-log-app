@@ -36,7 +36,7 @@ public class PatientController {
     }
 
     @GetMapping("/search")
-    public Patient search(String name, String movement) {
+    public List<Patient> search(String name, String movement) {
         return patientSearvice.search(name, movement);
     }
 
