@@ -1,8 +1,11 @@
 package com.painlog.management.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,13 +24,11 @@ public class PatientController {
     PatientSearvice patientSearvice;
 
     @PostMapping("/insert")
-    public String insert(@RequestBody InsertPatient patient) {
-        String result = "";
-        if (patientSearvice.insert(patient))
-            result = "一件追加しました！";
-        else
-            result = "追加失敗しました！";
-        return result;
+    public ResponseEntity<Map<String, String>> insert(@RequestBody InsertPatient patient) {
+        boolean success = patientSearvice.insert(patient);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", success ? "一件追加しました！" : "追加失敗しました！");
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/select")
@@ -41,23 +42,18 @@ public class PatientController {
     }
 
     @PostMapping("/update")
-    public String update(@RequestBody Patient patient) {
-        String result = "";
-        if (patientSearvice.update(patient))
-            result = "一件更新しました！";
-        else
-            result = "更新失敗しました！";
-        return result;
+    public ResponseEntity<Map<String, String>> update(@RequestBody Patient patient) {
+        boolean success = patientSearvice.update(patient);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", success ? "一件更新しました！" : "更新失敗しました！");
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/delete")
-    public String delete(@RequestBody int id) {
-        String result = "";
-        if (patientSearvice.delete(id))
-            result = "一件削除しました！";
-        else
-            result = "削除失敗しました！";
-        return result;
+    public ResponseEntity<Map<String, String>> delete(@RequestBody Integer id) {
+        boolean success = patientSearvice.delete(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", success ? "一件削除しました！" : "削除失敗しました！");
+        return ResponseEntity.ok(response);
     }
-
 }

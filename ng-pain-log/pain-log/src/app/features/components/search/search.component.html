@@ -1,4 +1,7 @@
-<input class="input-name" #name placeholder="Name" />
-<input class="inpit-movement" #movement placeholder="Movement" />
-<button mat-flat-button color="basic" (click)="onSerch(name.value, movement.value)" class="search-button">Search</button>
-<button mat-stroked-button color="basic" (click)="onClear(name, movement)" class="clear-button">Clear</button>
+<div class="search-container">
+    <input class="input-name" #name placeholder="Name" />
+    <input class="input-movement" #movement placeholder="Movement" />
+    <button mat-flat-button color="basic" (click)="onSearch(name.value, movement.value)"
+        class="search-button">Search</button>
+    <button mat-stroked-button color="basic" (click)="onClear(name, movement)" class="clear-button">Clear</button>
+</div>

@@ -1,6 +1,6 @@
 export interface PainLogResultDataEntity {
-    id: Date;
-    date: number;
+    id: number;
+    date: Date;
     name: string;
     movement: string;
     vas: number;

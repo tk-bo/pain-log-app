@@ -1,0 +1,32 @@
+@primary-color: #007bff;
+@primary-hover: #0056b3;
+@background-color: #f9f9f9;
+@border-radius: 8px;
+@input-border: #ccc;
+@shadow-color: rgba(0, 0, 0, 0.1);
+
+.search-container {
+    display: flex;
+    gap: 12px;
+    padding: 8px;
+    background-color: @background-color;
+    border-radius: @border-radius;
+    max-width: 600px;
+    margin-left: 20px;
+    margin-right: auto;
+    padding-right: 20px;
+
+    .input-field {
+        padding: 8px 12px;
+        border: 1px solid @input-border;
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.3s ease;
+        width: 160px;
+
+        &:focus {
+            border-color: @primary-color;
+            box-shadow: 0 0 4px fade(@primary-color, 50%);
+        }
+    }
+}

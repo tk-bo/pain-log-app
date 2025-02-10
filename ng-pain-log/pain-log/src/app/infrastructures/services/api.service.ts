@@ -12,24 +12,24 @@ export class ApiService {
 
   constructor( private http: HttpClient ) { }
 
-  insertPatients(patient: PainLogResultDataEntity): Observable<PainLogResultDataEntity> {
-    return this.http.post<PainLogResultDataEntity>(`${this.url}/insert`, patient);
+  insertPatients(patient: PainLogResultDataEntity): Observable<PainLogResultDataEntity[]> {
+    return this.http.post<PainLogResultDataEntity[]>(`${this.url}/insert`, patient);
   }
 
   selectPatients(): Observable<PainLogResultDataEntity[]> {
     return this.http.get<PainLogResultDataEntity[]>(`${this.url}/select`);
   }
 
-  searchPatients(user: string, movement: string): Observable<PainLogResultDataEntity[]> {
-    return this.http.get<PainLogResultDataEntity[]>(`${this.url}/search?user=${user}&movement=${movement}`);
+  searchPatients(name: string, movement: string): Observable<PainLogResultDataEntity[]> {
+    return this.http.get<PainLogResultDataEntity[]>(`${this.url}/search?name=${name}&movement=${movement}`);
   }
 
-  updatePatients(patient: PainLogResultDataEntity): Observable<PainLogResultDataEntity> {
-    return this.http.put<PainLogResultDataEntity>(`${this.url}/update`, patient);
+  updatePatients(patient: PainLogResultDataEntity): Observable<PainLogResultDataEntity[]> {
+    return this.http.post<PainLogResultDataEntity[]>(`${this.url}/update`, patient);
   }
 
   deletePatients(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/delete/${id}`);
+    return this.http.post<void>(`${this.url}/delete`, id);
   }
 
 }

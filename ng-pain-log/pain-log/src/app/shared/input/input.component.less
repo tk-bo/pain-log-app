@@ -1,0 +1,35 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // 各要素の間隔を統一
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  mat-slider {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: flex-end; // 右寄せ（中央揃えなら center に変更）
+    gap: 8px;
+
+    button {
+      min-width: 100px;
+    }
+  }
+}
+
+.input-form {
+  margin: 20px; // 必要に応じてマージンの値を調整してください
+}

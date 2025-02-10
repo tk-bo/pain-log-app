@@ -24,7 +24,7 @@ public class PatientDaoJdbc implements PatientDao {
     @Override
     public int insertOne(InsertPatient patient) throws DataAccessException {
         int rowNumber = jdbc.update(
-            "INSERT INTO mydatabase.patients(date" + "name," + " movement," + " vas," + "memo)"
+            "INSERT INTO mydatabase.patients(date, " + "name, " + "movement, " + "vas, " + "memo)"
                         + " VALUES(?, ?, ?, ?, ?)",
             patient.getDate(), patient.getName(), patient.getMovement(), patient.getVas(), patient.getMemo());
         return rowNumber;
@@ -76,8 +76,8 @@ public class PatientDaoJdbc implements PatientDao {
     @Override
     public int updateOne(Patient patient) throws DataAccessException {
         int rowNumber = jdbc.update(
-            "Update mydatabase.patients" + " SET" + " date = ?," + " name = ?," + " movement = ?," + " vas = ?," + " memo = ?",
-            patient.getDate(), patient.getName(), patient.getMovement(), patient.getVas(), patient.getMemo());
+            "Update mydatabase.patients" + " SET" + " date = ?," + " name = ?," + " movement = ?," + " vas = ?," + " memo = ?" + " WHERE id = ?",
+            patient.getDate(), patient.getName(), patient.getMovement(), patient.getVas(), patient.getMemo(), patient.getId());
         return  rowNumber;
     }
     
