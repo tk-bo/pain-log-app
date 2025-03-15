@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
-import com.painlog.management.domein.model.InsertPatient;
-import com.painlog.management.domein.model.Patient;
+import com.painlog.management.dto.patient.InsertPatient;
+import com.painlog.management.dto.patient.Patient;
 
 public interface PatientDao {
     // Insert a single record into the Patient table.

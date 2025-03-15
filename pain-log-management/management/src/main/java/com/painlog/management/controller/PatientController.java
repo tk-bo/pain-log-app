@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.painlog.management.domein.model.InsertPatient;
-import com.painlog.management.domein.model.Patient;
 import com.painlog.management.domein.service.PatientSearvice;
+import com.painlog.management.dto.patient.InsertPatient;
+import com.painlog.management.dto.patient.Patient;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

@@ -1,5 +1,12 @@
-  .example-spacer {
-    flex: 1 1 auto;
+  :host ::ng-deep {
+    height: calc(5vh);
+    flex: 0 0 auto;
+  }
+
+  .fixed-toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
 
   mat-toolbar {
@@ -9,11 +16,4 @@
 
   .example-icon {
     color: white; /* ボタンの色を白に変更 */
-  }
-
-  .fixed-toolbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 2000;
   }

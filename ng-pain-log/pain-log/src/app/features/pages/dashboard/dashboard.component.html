@@ -1,12 +1,5 @@
-<div class="search-container">
-  <app-search (searchCompleted)="onSearchCompleted($event)"></app-search>
-</div>
-
+<app-search (searchCompleted)="onSearchCompleted($event)"></app-search>
 <div class="table-container">
-  <app-data-table [dataSource$]="dataSource$">
-  </app-data-table>
+  <app-data-table [dataSource$]="dataSource$"></app-data-table>
 </div>
-
-<div class="add-button">
-  <app-add-button (add)="loadPainlog()"></app-add-button>
-</div>
+<app-add-button (add)="loadPainlog()"></app-add-button>

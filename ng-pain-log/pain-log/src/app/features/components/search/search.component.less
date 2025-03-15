@@ -5,7 +5,7 @@
 @input-border: #ccc;
 @shadow-color: rgba(0, 0, 0, 0.1);
 
-.search-container {
+.search-container ::ng-deep {
     display: flex;
     gap: 12px;
     padding: 8px;
@@ -29,4 +29,20 @@
             box-shadow: 0 0 4px fade(@primary-color, 50%);
         }
     }
+}
+
+/* 検索コンテナの固定 */
+.search-container ::ng-deep {
+    top: 0;
+    margin-top: 64px;
+    padding: 8px 0;
+    position: fixed;
+    width: 100%;
+    background: white;
+    z-index: 10;
+  }
+
+:host ::ng-deep {
+    height: calc(5vh);
+    flex: 0 0 auto;
 }

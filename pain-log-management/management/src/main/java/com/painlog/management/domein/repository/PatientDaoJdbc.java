@@ -1,4 +1,4 @@
-package com.painlog.management.domein.repository.jdbc;
+package com.painlog.management.domein.repository;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -10,9 +10,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.painlog.management.domein.model.InsertPatient;
-import com.painlog.management.domein.model.Patient;
-import com.painlog.management.domein.repository.PatientDao;
+import com.painlog.management.dto.patient.InsertPatient;
+import com.painlog.management.dto.patient.Patient;
 
 @Repository("PatientDaoJdbc")
 public class PatientDaoJdbc implements PatientDao {

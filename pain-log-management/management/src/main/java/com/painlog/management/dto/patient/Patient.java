@@ -1,4 +1,4 @@
-package com.painlog.management.domein.model;
+package com.painlog.management.dto.patient;
 
 import java.time.LocalDate;
 
