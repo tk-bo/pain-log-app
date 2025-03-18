@@ -15,7 +15,7 @@ import com.painlog.management.dto.patient.Patient;
 @Service
 public class PatientSearvice {
     @Autowired
-    @Qualifier("PatientDaoJdbc")
+    @Qualifier("PatientDaoImpl")
     PatientDao patientDao;
 
     // Method for adding one item.

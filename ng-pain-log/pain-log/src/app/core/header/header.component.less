@@ -1,19 +1,38 @@
-  :host ::ng-deep {
-    height: calc(5vh);
-    flex: 0 0 auto;
-  }
+:host ::ng-deep {
+  height: calc(5vh);
+  flex: 0 0 auto;
+}
 
-  .fixed-toolbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
+.fixed-toolbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
-  mat-toolbar {
-    background-color: #3f51b5; /* 好きな色に変更 */
-    color: white; /* テキストの色を変更 */
-  }
+mat-toolbar {
+  background-color: #3f51b5; /* 好きな色に変更 */
+  color: white; /* テキストの色を変更 */
+}
 
-  .example-icon {
-    color: white; /* ボタンの色を白に変更 */
+.example-icon {
+  color: white; /* ボタンの色を白に変更 */
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+span.username {
+  font-size: 1.2rem; /* お好みのサイズに変更 */
+  margin-right: 8px; /* 右側にスペースを追加 */
+}
+
+/* ログアウトボタンの基本色とホバー時の色変更 */
+.login-out-icon {
+  color: white;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: rgb(124, 124, 124); /* ホバー時に変更する色。お好みで調整してください。 */
   }
+}

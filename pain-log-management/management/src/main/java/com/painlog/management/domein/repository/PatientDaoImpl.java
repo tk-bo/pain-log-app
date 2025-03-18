@@ -13,11 +13,15 @@ import org.springframework.stereotype.Repository;
 import com.painlog.management.dto.patient.InsertPatient;
 import com.painlog.management.dto.patient.Patient;
 
-@Repository("PatientDaoJdbc")
-public class PatientDaoJdbc implements PatientDao {
+@Repository("PatientDaoImpl")
+public class PatientDaoImpl implements PatientDao {
+
+    private final JdbcTemplate jdbc;
 
     @Autowired
-    JdbcTemplate jdbc;
+    public PatientDaoImpl(JdbcTemplate jdbc) {
+        this.jdbc = jdbc;
+    }
 
     // Insert a single record into the Patient table.
     @Override

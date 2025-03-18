@@ -1,0 +1,45 @@
+<div class="register-container">
+    <h2>新規登録</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- ユーザー名入力 -->
+      <div class="form-group">
+        <label for="username">ユーザー名</label>
+        <input type="text" id="username" formControlName="username">
+        <div class="error" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+          ユーザー名は必須です。
+        </div>
+      </div>
+  
+      <!-- パスワード入力 -->
+      <div class="form-group">
+        <label for="password">パスワード</label>
+        <input type="password" id="password" formControlName="password">
+        <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+          パスワードは6文字以上必要です。
+        </div>
+      </div>
+  
+      <!-- 確認用パスワード入力 -->
+      <div class="form-group">
+        <label for="confirmPassword">パスワード(確認)</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword">
+        <div class="error" *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">
+          パスワードが一致していません。
+        </div>
+      </div>
+  
+      <!-- エラーメッセージ -->
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+  
+      <!-- 成功メッセージ -->
+      <div class="success-message" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+  
+      <!-- 登録ボタン -->
+      <button type="submit" [disabled]="registerForm.invalid">登録する</button>
+    </form>
+  </div>
+  

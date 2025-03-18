@@ -44,7 +44,6 @@ export class DataTableComponent {
     const dialogRef = this.dialog.open(InputComponent, {
       width: '600px',
       data: element,
-      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {

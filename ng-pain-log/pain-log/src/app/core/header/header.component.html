@@ -1,7 +1,23 @@
 <mat-toolbar class="fixed-toolbar">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button class="example-icon" aria-label="Menu">
     <mat-icon>menu</mat-icon>
   </button>
   <span>Pain Log</span>
   <span class="example-spacer"></span>
+
+  <!-- ログイン済みの場合はユーザー名とログアウトボタンを表示 -->
+  <ng-container *ngIf="isLoggedIn(); else loggedOut">
+    <mat-icon>person</mat-icon>
+    <span class="username">{{ username }}</span>
+    <button mat-icon-button class="login-out-icon" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </ng-container>
+
+  <!-- 未ログインの場合はログインボタンを表示 -->
+  <ng-template #loggedOut>
+    <button mat-icon-button class="login-out-icon" routerLink="/login" aria-label="Login">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </ng-template>
 </mat-toolbar>

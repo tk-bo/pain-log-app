@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="login-container">
+  <h2>ログイン</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- ユーザー名入力 -->
+    <div class="form-group">
+      <label for="username">ユーザー名</label>
+      <input type="text" id="username" formControlName="username" required>
+      <div class="error" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+        ユーザー名を入力してください。
+      </div>
+    </div>
+
+    <!-- パスワード入力 -->
+    <div class="form-group">
+      <label for="password">パスワード</label>
+      <input type="password" id="password" formControlName="password" required>
+      <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        パスワードは6文字以上で入力してください。
+      </div>
+    </div>
+
+    <!-- エラーメッセージ -->
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <!-- ログインボタン -->
+    <button type="submit" [disabled]="loginForm.invalid">ログイン</button>
+  </form>
+
+  <!-- 新規登録ページへ遷移するリンク -->
+  <p class="register-link">
+    アカウントをお持ちでない方は、
+    <a routerLink="/register">こちら</a>
+    から登録してください。
+  </p>
+</div>

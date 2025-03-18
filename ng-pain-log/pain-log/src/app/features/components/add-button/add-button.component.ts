@@ -2,7 +2,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InputComponent } from '../../../shared/input/input.component';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -26,7 +25,6 @@ export class AddButtonComponent {
     const dialogRef = this.dialog.open(InputComponent, {
       width: "600px",
       data: {},
-      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {

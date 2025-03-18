@@ -1,32 +1,36 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule, MatCalendarCellClassFunction } from '@angular/material/datepicker'
+import { MatCalendarCellClassFunction, MatDatepickerModule } from '@angular/material/datepicker'
 import { MatSliderModule } from '@angular/material/slider';
 import { ApiService } from '../../infrastructures/services/api.service';
 import { PainLogResultDataEntity } from '../models/pain-log-data-entity';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-input',
   standalone: true,
+  providers: [provideNativeDateAdapter()],
   imports: [
     CommonModule,
     MatFormFieldModule, 
     MatInputModule, 
-    MatDatepickerModule, 
+    MatDatepickerModule,
     MatSliderModule, 
     ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
     FormsModule,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './input.component.html',
-  styleUrl: './input.component.less'
+  styleUrls: ['./input.component.less']
 })
+
 export class InputComponent implements OnInit {
   fg!: FormGroup;
 
@@ -40,7 +44,7 @@ export class InputComponent implements OnInit {
   ngOnInit(): void {
     this.fg = this.fb.group({
       id: [this.data?.id || 0],
-      date: [this.data?.date || ''],
+      date: [this.data?.date ? new Date(this.data.date) : null],
       name: [this.data?.name || ''],
       movement: [this.data?.movement || ''],
       vas: [this.data?.vas || 0],
@@ -82,4 +86,5 @@ export class InputComponent implements OnInit {
   onCancel(): void {
     this.dialogRef.close();
   }
+
 }
